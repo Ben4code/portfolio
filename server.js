@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const path = require('path');
 const server = require('./config/keys');
 const bodyParser = require('body-parser')
 const multer = require('multer');
@@ -51,6 +51,15 @@ require('./config/passport')(passport);
 app.use('/api/users', users);
 app.use('/api/posts', posts);
 app.use('/api/profile', profile);
+
+//Serve static assests if in production
+if(process.env.NODE_ENV === "production"){
+    //Set static folder
+    app.use(express.static('client/build'));   
+    app.length('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
 
 //Port setup
 const port = process.env.PORT || 4500;
