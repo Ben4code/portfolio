@@ -42,7 +42,7 @@ class Navbar extends Component {
                 <li className="menu-item"><a href="/" onClick={this.onLogOut.bind(this)}>Logout</a></li>
                 <li className="menu-item">
                     <a href="/">
-                        <img src={ isAuth ? user.avatar.substr(14) : ''} width="30" alt="User avatar"/>
+                        <img src={ isAuth ?  `./${user.avatar.substr(14)}` : ''} width="30" alt="User avatar"/>
                     </a>
                 </li>
             </ul>
