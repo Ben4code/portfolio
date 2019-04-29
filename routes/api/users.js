@@ -39,7 +39,8 @@ router.post('/register', (req, res) => {
                     isAdmin: req.body.isAdmin,
                     avatar:  `img/uploads/${req.files.avatar[0].filename}` 
                 });
-
+                console.log(newUser.avatar);
+                
                 //---- New Bcrypt code -------
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
