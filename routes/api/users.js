@@ -30,14 +30,17 @@ router.post('/register', (req, res) => {
             if (user) {
                 res.status(400).json({ email: "Email field already exists" });
             } else {
+                
+                
                 const newUser = new User({
                     name: req.body.name,
                     email: req.body.email,
                     password: req.body.password,
                     isAdmin: req.body.isAdmin,
-                    avatar: req.files.avatar[0].path
+                    avatar:  `img/uploads/${req.files.avatar[0].filename}` 
                 });
-
+                console.log(newUser.avatar);
+                
                 //---- New Bcrypt code -------
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {

@@ -41,9 +41,11 @@ class Navbar extends Component {
                 {/* <li className="menu-item"><Link to="./img/downloads/nnaemekaObiohaCV.pdf" download>Resume</Link></li> */}
                 <li className="menu-item"><a href="/" onClick={this.onLogOut.bind(this)}>Logout</a></li>
                 <li className="menu-item">
-                    <a href="/">
-                        <img src={ isAuth ? user.avatar.substr(14) : ''} width="30" alt="User avatar"/>
-                    </a>
+                    <Link to="/">
+                        <img src={ isAuth ? user.avatar : ''} width="30" alt="User avatar"/>
+                        {/* <img src={ isAuth ? window.location.origin + '/' + user.avatar : ''} width="30" alt="User avatar"/> */}
+                        {/* <img src={ isAuth ? process.env.PUBLIC_URL + '/' + user.avatar.substr(14) : ''} width="30" alt="User avatar"/> */}
+                    </Link>
                 </li>
             </ul>
         );
