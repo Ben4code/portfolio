@@ -61,7 +61,7 @@ import {loginUser} from '../../../actions/authActions'
                 </label>
                 {errors.password && (<div className="errorMsg">{errors.password}</div>)}
 
-                <input type="submit" className="btn" value="Send &#xf1d8;" />
+                <input type="submit" className="btn" value="Login &#xf1d8;" />
               </form>
             </div>
           </div>
