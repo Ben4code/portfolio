@@ -13,6 +13,8 @@ var config = {
   firebase.initializeApp(config);
 
   const storage = firebase.storage();
+  let tested = "life";
+console.log(tested);
 
   export{
       storage, firebase as default

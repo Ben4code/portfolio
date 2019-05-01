@@ -56,7 +56,6 @@ export const registerUser = (userData, router) => dispatch => {
                     type: GET_ERRORS,
                     payload: errors
                 })
-
             },
             () => {
                 storage.ref('avatars').child(userData.avatar.name).getDownloadURL().then(url => {

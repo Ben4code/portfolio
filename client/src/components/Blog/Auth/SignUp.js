@@ -46,7 +46,6 @@ class SignUp extends Component {
   }
   postField = (e) => {
     e.preventDefault();
-    console.log("file:", this.state.avatar)
     let errors = {};
     errors.loading = true;
     this.setState({errors});
