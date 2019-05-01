@@ -102,20 +102,9 @@ router.get('/authuser', passport.authenticate('jwt', { session: false }), (req, 
 
 //Send Mail
 router.post('/mail', (req, res) => {
-
-    const checkUser = {
-        name: req.body.name,
-        email: req.body.email,
-        message: req.body.message,
-    }
-
-    //Validation
-    const { valid, errors } = mail(checkUser);
-    if (!valid) return res.status(400).json(errors);
-
-
+    
     let output = `
-        <h3>You have a new contact request from hello@benobioha.me</h3>
+        <h3>You have a new contact request from your portfolio website</h3>
         <p>Contact details</p>
         <ul>
             <li>Name: ${req.body.name}</li>
@@ -125,21 +114,12 @@ router.post('/mail', (req, res) => {
         </ul>
     `;
 
-
     let transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'Gmail',
         auth: {
             user: 'nbjezzy@gmail.com',
             pass: 'Degivenchy02@',
         },
-        
-        // host: 'smtp.zoho.com',
-        // port: 465,
-        // secure: true, // true for 465, false for other ports
-        // auth: {
-        //     user: 'hello@benobioha.me',
-        //     pass: 'Degivenchy01@',
-        // },
         tls: {
             rejectUnauthorized: false
         }
@@ -147,26 +127,20 @@ router.post('/mail', (req, res) => {
 
     // setup email data with unicode symbols
     let mailOptions = {
-        //from: '"'+ req.body.name +'" <'+ req.body.email +'>', // sender address
-        from: 'nbjezzy@gmail.com',
+        from: 'Nnaemeka Obioha <nbjezzy@gmail.com>',
         to: 'nbjezzy@gmail.com', // list of receivers
-        subject: "Mail from Benobioha.com", // Subject line
+        subject: "Mail from Portfolio Site (Benobioha.com)", // Subject line
         html: output // html body
     };
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return console.log(error);
+            res.json({errors: "Something went wrong while trying to send you mail."})
         }
-        console.log('Message sent: %s', info.messageId);
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-        res.redirect('/');
+        res.json({confirm: "Your mail was sent successfully."})
     });
-
 })
-
 
 
 module.exports = router;

@@ -29,5 +29,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://www.benobioha.me"
+  "proxy": "http://localhost:4500"
 }

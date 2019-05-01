@@ -3,13 +3,13 @@ import axios from 'axios'
 import setAuthToken from '../ultils/setAuthToken'
 import jwt_decode from 'jwt-decode'
 import { storage } from '../Firebase/config';
-import registerValidation from '../ultils/validation'
+import {register} from '../ultils/validation'
 
 //Register User
 export const registerUser = (userData, router) => dispatch => {
     
     //Validate form fields
-    const { valid, errors } = registerValidation({ ...userData });
+    const { valid, errors } = register({ ...userData });
     if (!valid) {
         return dispatch({
             type: GET_ERRORS,

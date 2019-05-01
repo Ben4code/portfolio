@@ -43,4 +43,20 @@ const register = (data) => {
     }
 }
 
-export default register;
+
+const mail = (data) => {
+    
+    let errors = {};
+    if(isEmpty(data.name)) errors.name = "Name field is required.";
+    if(isEmpty(data.message)) errors.message = "Message field is required.";
+    if(isEmpty(data.email)) errors.email = "Email field is required.";
+    return {
+        errors,
+        valid: Object.keys(errors).length === 0 ? true : false
+    }
+}
+
+
+
+
+export { register, mail };
