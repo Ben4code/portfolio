@@ -41,6 +41,8 @@ export default class Contact extends Component {
 
         axios.post('/api/users/mail', mailUser)
             .then(res => {
+                console.log(res);
+                
                 this.setState({
                     name: '',
                     email: '',

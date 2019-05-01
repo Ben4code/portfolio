@@ -120,9 +120,9 @@ router.post('/mail', (req, res) => {
             user: 'nbjezzy@gmail.com',
             pass: 'Degivenchy02@',
         },
-        tls: {
-            rejectUnauthorized: false
-        }
+        // tls: {
+        //     rejectUnauthorized: false
+        // }
     });
 
     // setup email data with unicode symbols
