@@ -136,11 +136,11 @@ router.post('/mail', (req, res) => {
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log(error);
-            res.json({errors: "Something went wrong while trying to send you mail."})
+            return res.json({error})
         }
         console.log(info);
-        res.json({confirm: "Your mail was sent successfully."})
+        info.confirm = "Your mail was sent successfully.";
+        return res.json({info})
     });
 })
 
