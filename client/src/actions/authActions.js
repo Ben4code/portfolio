@@ -2,7 +2,7 @@ import { GET_ERRORS, SET_CURRENT_USER } from './types';
 import axios from 'axios'
 import setAuthToken from '../ultils/setAuthToken'
 import jwt_decode from 'jwt-decode'
-import { storage } from '../Firebase/firebase';
+import { storage } from '../Firebase/config';
 import registerValidation from '../ultils/validation'
 
 //Register User
