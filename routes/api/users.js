@@ -12,16 +12,9 @@ const nodemailer = require('nodemailer')
 
 //POST api/users/register Public
 router.post('/register', (req, res) => {
-    const checkUser = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        confirmPassword: req.body.confirmPassword,
-        avatar: req.files.avatar
-    }
 
     //Validation
-    const { valid, errors } = register(checkUser);
+    const { valid, errors } = register({...req.body});
     if (!valid) return res.status(400).json(errors);
 
     //Check if email already exists
@@ -30,16 +23,13 @@ router.post('/register', (req, res) => {
             if (user) {
                 res.status(400).json({ email: "Email field already exists" });
             } else {
-                
-                
                 const newUser = new User({
                     name: req.body.name,
                     email: req.body.email,
                     password: req.body.password,
                     isAdmin: req.body.isAdmin,
-                    avatar:  `img/uploads/${req.files.avatar[0].filename}` 
+                    avatar: req.body.avatar
                 });
-                console.log(newUser.avatar);
                 
                 //---- New Bcrypt code -------
                 bcrypt.genSalt(10, (err, salt) => {

@@ -33,7 +33,7 @@ const register = (data) => {
     
     
     //Image
-    if(!data.avatar) errors.image = "Your avatar is required";
+    //if(!data.avatar) errors.image = "Your avatar is required";
     
     return {
         errors,
