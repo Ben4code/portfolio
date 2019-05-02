@@ -30,8 +30,6 @@ export default class Contact extends Component {
             message: this.state.message
         }
         
-        
-
         //Validate form fields
         const { valid, errors } = mail({ ...mailUser });
         if (!valid) {
@@ -53,12 +51,10 @@ export default class Contact extends Component {
                 message_html: `${mailUser.message}`
             }
         }
-        console.log(mailObj);
+        
         //Send email http request 
         axios.post('https://api.emailjs.com/api/v1.0/email/send', mailObj)
             .then(res => {
-                console.log(res);
-
                 this.setState({
                     name: '',
                     email: '',
