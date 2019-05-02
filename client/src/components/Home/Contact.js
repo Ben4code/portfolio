@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import {mail} from '../../ultils/validation'
+import Emailjs from 'emailjs-com'
+import {user_id, email_template, email_address, mailService} from '../../config/emailjs_key'
 
 export default class Contact extends Component {
     state = {
@@ -39,21 +41,43 @@ export default class Contact extends Component {
             return;
         }
 
-        axios.post('/api/users/mail', mailUser)
-            .then(res => {
-                console.log(res);
+        const templateParams = {
+            from_name: `${mailUser.name} (${mailUser.email})` ,
+            to_name: `${email_address}`,
+            subject: `Mail from Portfolio website`,
+            message_html: `${mailUser.message}`
+        }
+
+        //Send mail request
+        Emailjs.send(mailService, email_template, templateParams, user_id)
+        .then(res => {
+            this.setState({
+                name: '',
+                email: '',
+                message: '',
+                errors: '',
+                confirm: res
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        // axios.post('/api/users/mail', mailUser)
+        //     .then(res => {
+        //         console.log(res);
                 
-                this.setState({
-                    name: '',
-                    email: '',
-                    message: '',
-                    errors: '',
-                    confirm: res.data.confirm
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        //         this.setState({
+        //             name: '',
+        //             email: '',
+        //             message: '',
+        //             errors: '',
+        //             confirm: res.data.confirm
+        //         });
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     })
     }
 
     render() {
