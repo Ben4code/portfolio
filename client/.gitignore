@@ -6,7 +6,7 @@
 /.pnp
 .pnp.js
 /src/Firebase/config.js
-
+/src/config/emailjs_key.js
 
 # testing
 /coverage

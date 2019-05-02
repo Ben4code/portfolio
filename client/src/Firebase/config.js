@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/storage';
 
 
-var config = {
+const config = {
     apiKey: "AIzaSyCGlChak3OAtzs8WmDvMKL0lBBYdGScFrw",
     authDomain: "ben-portfolio.firebaseapp.com",
     databaseURL: "https://ben-portfolio.firebaseio.com",
