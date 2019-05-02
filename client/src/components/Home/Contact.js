@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { mail } from '../../ultils/validation'
-import { user_id, template_id, email_address, service_id } from '../../config/emailjs_key'
+
 
 export default class Contact extends Component {
     state = {
@@ -29,6 +29,8 @@ export default class Contact extends Component {
             email: this.state.email,
             message: this.state.message
         }
+        
+        
 
         //Validate form fields
         const { valid, errors } = mail({ ...mailUser });
@@ -41,17 +43,17 @@ export default class Contact extends Component {
         }
         //Format email params and body
         const mailObj = {
-            service_id,
-            template_id,
-            user_id,
+            service_id: `${process.env.REACT_APP_SERVICE_ID}`,
+            template_id: `${process.env.REACT_APP_TEMPLATE_ID}`,
+            user_id: `${process.env.REACT_APP_USER_ID}`,
             template_params: {
                 from_name: `${mailUser.name} (${mailUser.email})`,
-                to_name: `${email_address}`,
+                to_name: `${process.env.REACT_APP_EMAIL_ADDRESS}`,
                 subject: `Mail from Portfolio website`,
                 message_html: `${mailUser.message}`
             }
         }
-       
+        console.log(mailObj);
         //Send email http request 
         axios.post('https://api.emailjs.com/api/v1.0/email/send', mailObj)
             .then(res => {
