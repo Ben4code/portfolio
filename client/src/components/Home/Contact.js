@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-import {mail} from '../../ultils/validation'
-import Emailjs from 'emailjs-com'
-import {user_id, email_template, email_address, mailService} from '../../config/emailjs_key'
+import { mail } from '../../ultils/validation'
+import { user_id, template_id, email_address, service_id } from '../../config/emailjs_key'
 
 export default class Contact extends Component {
     state = {
@@ -34,50 +33,41 @@ export default class Contact extends Component {
         //Validate form fields
         const { valid, errors } = mail({ ...mailUser });
         if (!valid) {
-            this.setState({errors})
-            setTimeout(()=>{
-                this.setState({errors: ''})
+            this.setState({ errors })
+            setTimeout(() => {
+                this.setState({ errors: '' })
             }, 3000)
             return;
         }
-
-        const templateParams = {
-            from_name: `${mailUser.name} (${mailUser.email})` ,
-            to_name: `${email_address}`,
-            subject: `Mail from Portfolio website`,
-            message_html: `${mailUser.message}`
+        //Format email params and body
+        const mailObj = {
+            service_id,
+            template_id,
+            user_id,
+            template_params: {
+                from_name: `${mailUser.name} (${mailUser.email})`,
+                to_name: `${email_address}`,
+                subject: `Mail from Portfolio website`,
+                message_html: `${mailUser.message}`
+            }
         }
+       
+        //Send email http request 
+        axios.post('https://api.emailjs.com/api/v1.0/email/send', mailObj)
+            .then(res => {
+                console.log(res);
 
-        //Send mail request
-        Emailjs.send(mailService, email_template, templateParams, user_id)
-        .then(res => {
-            this.setState({
-                name: '',
-                email: '',
-                message: '',
-                errors: '',
-                confirm: res
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        })
-
-        // axios.post('/api/users/mail', mailUser)
-        //     .then(res => {
-        //         console.log(res);
-                
-        //         this.setState({
-        //             name: '',
-        //             email: '',
-        //             message: '',
-        //             errors: '',
-        //             confirm: res.data.confirm
-        //         });
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
+                this.setState({
+                    name: '',
+                    email: '',
+                    message: '',
+                    errors: '',
+                    confirm: "Mail sent successfully."
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     render() {
@@ -88,7 +78,7 @@ export default class Contact extends Component {
                 <h2 className="contact__heading">Contact</h2>
                 <div className="container">
                     <div className="contact__form">
-                        <div className="form"> 
+                        <div className="form">
                             <h1>Tell me something</h1>
                             <p>Or you can request a quote.</p>
                             <form onSubmit={this.postField}>
@@ -108,7 +98,7 @@ export default class Contact extends Component {
                                 {errors.message && (<div className="errorMsg">{errors.message}</div>)}
 
                                 <input type="submit" className="btn" value="Send &#xf1d8;" />
-                                {confirm && (<div style={{color: 'blue', fontWeight: 'bold'}}>{confirm}</div>)}
+                                {confirm && (<div style={{ color: 'blue', fontWeight: 'bold' }}>{confirm}</div>)}
 
                             </form>
                         </div>
