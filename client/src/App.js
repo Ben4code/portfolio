@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import jwt_decode from 'jwt-decode'
 
+
+
 //Component imports
 import Navbar from './components/Layouts/Navbar';
 import Footer from './components/Layouts/Footer';
