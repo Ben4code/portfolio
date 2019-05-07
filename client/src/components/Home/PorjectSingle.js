@@ -18,7 +18,7 @@ export default function PorjectSingle({ project }) {
                     <p>{project.projectDesc}</p>
                 </div>
                 <div className="myproject__item-links">
-                    <Link to={project.projectLink}>View</Link>
+                { project.projectLink ? <a target="_blank"  rel="noopener noreferrer" href={project.projectLink}>View</a> : null}
                     { project.projectRepo ? <a target="_blank"  rel="noopener noreferrer" href={project.projectRepo}>Github</a> : null}
                     
                 </div>

@@ -54,7 +54,7 @@ const projects= [
         projectTitle: "My Portfolio",
         projectDesc: "My fullstack portfolio website.",
         projectImg: "./img/projects/portfolio.jpg",
-        projectLink: "https://peaceful-stallman-d6bc5f.netlify.com/",
+        projectLink: "",
         projectRepo: "https://github.com/Ben4code/portfolio",
         projectBio: "It uses material-ui styled components. It relies on firebase file storage and cloud database. It also uses the firebase authentication library for access level control.",
         projectBody: [
