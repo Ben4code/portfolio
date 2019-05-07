@@ -14,7 +14,7 @@ export default function Hero() {
             <div className="hero__content-text">
             <h2>Ben Obioha</h2>
               <h3>Frontend Developer</h3>
-              <p>Hello, I am Ben, a frontend developer based in United Kingdom.</p>
+              <p>Hello, I am Ben, a frontend developer based in the United Kingdom.</p>
               <span className="hero__content-links">
                 <ul>
                   <li><Link to="/"><i className="fa fa-github"></i></Link></li>

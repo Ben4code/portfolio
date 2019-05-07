@@ -36,7 +36,7 @@ export default class Project extends Component {
                                     <strong>
                                         <Link to="/projects">
                                             <h3> Personal Projects </h3>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae eligendi ipsa quod in nobis qui quisquam ad? Unde, sapiente nihil!</p>
+                                            <p>I became a developer so that I could make my ideas a reality. These are some of the ideas I hope will go mainstream some day.</p>
                                         </Link>
                                     </strong>
                                 </span>
@@ -47,10 +47,9 @@ export default class Project extends Component {
                                     <strong>
                                         <Link to="/projects">
                                             <h3>Experimental Projects</h3>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae eligendi ipsa quod in nobis qui quisquam ad? Unde, sapiente nihil!</p>
+                                            <p>Staying relevant in the tech industry requires a lot of research and development. I spend lots of hours working on new projects by reading blog posts and watching videos with the intention of extending them.</p>
                                         </Link>
                                     </strong>
-
                                 </span>
                             </li>
                         </ul>
