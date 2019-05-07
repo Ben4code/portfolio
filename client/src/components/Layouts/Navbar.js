@@ -31,6 +31,7 @@ class Navbar extends Component {
     }
 
     render() {
+        
         const { isAuth, user } = this.props.auth;
          
         const authLinks = (
@@ -51,7 +52,7 @@ class Navbar extends Component {
                 <li className="menu-item"><NavLink to="/projects">Projects</NavLink></li>
                 <li className="menu-item"><NavLink to="/blog">Blog</NavLink></li>
                 {/* <li className="menu-item"><Link to="./img/downloads/nnaemekaObiohaCV.pdf" download>Resume</Link></li> */}
-                <li className="menu-item"><NavLink to="/login">Login</NavLink></li>
+               {this.props.location.pathname === '/blog' ? <li className="menu-item"><NavLink to="/login">Login</NavLink></li> : null} 
             </ul>
             
         )
