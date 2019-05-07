@@ -403,7 +403,8 @@
   align-items: center;
   padding: 1rem;
 }
-.myproject__item-links a:link{
+.myproject__item-links a:link, 
+.myproject__item-links a:visited{
   outline: none;
   color: #8554ED;
   font-weight: 700;
@@ -411,7 +412,10 @@
   padding: .5rem;
   cursor: pointer;
 }
-
+.myproject__item-links a:hover,
+.myproject__item-links a:active{
+  color: #D3691A;
+}
 
 /* --------------- ProjectCase ------------------- */
 .case{  
