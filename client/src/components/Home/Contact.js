@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { mail } from '../../ultils/validation'
 
@@ -29,7 +28,7 @@ export default class Contact extends Component {
             email: this.state.email,
             message: this.state.message
         }
-        
+
         //Validate form fields
         const { valid, errors } = mail({ ...mailUser });
         if (!valid) {
@@ -51,7 +50,7 @@ export default class Contact extends Component {
                 message_html: `${mailUser.message}`
             }
         }
-        
+
         //Send email http request 
         axios.post('https://api.emailjs.com/api/v1.0/email/send', mailObj)
             .then(res => {
@@ -102,10 +101,26 @@ export default class Contact extends Component {
                         </div>
                         <div className="features">
                             <ul className="social">
-                                <li> <Link to=""><i className="fa fa-linkedin"></i> LinkedIn</Link></li>
-                                <li> <Link to=""><i className="fa fa-twitter"></i> Twitter</Link></li>
-                                <li> <Link to=""><i className="fa fa-github"></i> Github</Link></li>
-                                <li> <Link to=""><i className="fa fa-youtube"></i> Youtube</Link></li>
+                                <li>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nnaemeka-ben-obioha">
+                                        <i className="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/Ben4code">
+                                        <i className="fa fa-github"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/degivenchy">
+                                        <i className="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCApXNEn33tCZDSagPcWlA8Q/featured?view_as=subscriber">
+                                        <i className="fa fa-youtube"></i>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
