@@ -103,22 +103,22 @@ export default class Contact extends Component {
                             <ul className="social">
                                 <li>
                                     <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nnaemeka-ben-obioha">
-                                        <i className="fa fa-linkedin"></i>
+                                        <i className="fa fa-linkedin"></i> LinkedIn
                                     </a>
                                 </li>
                                 <li>
                                     <a target="_blank" rel="noopener noreferrer" href="https://github.com/Ben4code">
-                                        <i className="fa fa-github"></i>
+                                        <i className="fa fa-github"></i> Github
                                     </a>
                                 </li>
                                 <li>
                                     <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/degivenchy">
-                                        <i className="fa fa-twitter"></i>
+                                        <i className="fa fa-twitter"></i> Twitter
                                     </a>
                                 </li>
                                 <li>
                                     <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCApXNEn33tCZDSagPcWlA8Q/featured?view_as=subscriber">
-                                        <i className="fa fa-youtube"></i>
+                                        <i className="fa fa-youtube"></i> Youtube
                                     </a>
                                 </li>
                             </ul>
