@@ -39,7 +39,7 @@ class Navbar extends Component {
                 <li className="menu-item"><NavLink exact to="/">Home</NavLink></li>
                 <li className="menu-item"><NavLink to="/projects">Projects</NavLink></li>
                 <li className="menu-item"><NavLink to="/blog">Blog</NavLink></li>
-                <li className="menu-item"><Link to="./img/downloads/nnaemekaObioha_UK_CV.pdf" download>Resume</Link></li>
+                {/* <li className="menu-item"><Link to="./img/downloads/nnaemekaObioha_UK_CV.pdf" download>Resume</Link></li> */}
                 <li className="menu-item"><a href="/" onClick={this.onLogOut.bind(this)}>Logout</a></li>
                 <li className="menu-item">
                     <img src={ isAuth ? user.avatar : ''} width="30" style={{backgroundColor: 'fff', borderRadius: '50%'}} alt="User avatar"/>
@@ -51,7 +51,7 @@ class Navbar extends Component {
                 <li className="menu-item"><NavLink exact to="/">Home</NavLink></li>
                 <li className="menu-item"><NavLink to="/projects">Projects</NavLink></li>
                 <li className="menu-item"><NavLink to="/blog">Blog</NavLink></li>
-                <li className="menu-item"><Link to="./img/downloads/nnaemekaObioha_UK_CV.pdf" download>Resume</Link></li>
+                {/* <li className="menu-item"><Link to="./img/downloads/nnaemekaObioha_UK_CV.pdf" download>Resume</Link></li> */}
                {this.props.location.pathname === '/blog' ? <li className="menu-item"><NavLink to="/login">Login</NavLink></li> : null} 
             </ul>
             
